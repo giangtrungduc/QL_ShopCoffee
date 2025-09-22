@@ -11,4 +11,7 @@ module com.example.ql_shopcoffee {
 
     opens com.example.ql_shopcoffee to javafx.fxml;
     exports com.example.ql_shopcoffee;
+    exports com.example.ql_shopcoffee.Controllers;
+    exports com.example.ql_shopcoffee.Controllers.Admin;
+    exports com.example.ql_shopcoffee.Controllers.Staff;
 }
