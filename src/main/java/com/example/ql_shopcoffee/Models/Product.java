@@ -1,31 +1,53 @@
 package com.example.ql_shopcoffee.Models;
-/* Lớp Product đại diện cho 1 sản phẩm */
-public class Product {
-    private String productID; // Mã sản phẩm
-    private String name; // Tên sản phẩm
-    private String category; // Loại sản phẩm
-    private double price; // Giá sản phẩm
 
-    public Product(String productID, String name, int price, String category) {
-        this.productID = productID;
+import com.example.ql_shopcoffee.Models.Enums.ProductType;
+
+import java.util.Objects;
+
+public class Product {
+    private String id;
+    private String name;
+    private ProductType type;
+    private double price;
+
+    public Product(String id, String name, ProductType type, double price) {
+        this.id = id;
         this.name = name;
-        this.category = category;
+        this.type = type;
         this.price = price;
     }
-    public String getProductID() { return productID; }
-    public void setProductID(String productID) { this.productID = productID; }
 
+    // getter
+    public String getId() { return id; }
     public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getCategory() { return category; }
-    public void setCategory(String category) { this.category = category; }
-
+    public ProductType getType() { return type; }
     public double getPrice() { return price; }
+
+    // setter
+    public void setId(String id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setType(ProductType type) { this.type = type; }
     public void setPrice(double price) { this.price = price; }
 
     @Override
     public String toString() {
-        return "Product{" + "productId='" + this.productID + '\'' + ", name='" + this.name + '\'' + ", price=" + this.price + ", category='" + this.category + '\'' + '}';
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", price=" + price +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) && Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

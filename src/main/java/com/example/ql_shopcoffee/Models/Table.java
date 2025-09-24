@@ -1,32 +1,38 @@
 package com.example.ql_shopcoffee.Models;
 
+import com.example.ql_shopcoffee.Models.Enums.TableStatus;
+
+import java.util.Objects;
+
 public class Table {
     private int tableNumber;
-    private String status; // "Trống", "Có khách"
+    private TableStatus tableStatus;
 
-    public Table(int tableNumber, String status) {
-        this.tableNumber = tableNumber;
-        this.status = status;
-    }
+    // getter
+    public int getTableNumber() { return tableNumber; }
+    public TableStatus getTableStatus() { return tableStatus; }
 
-    // getter & setter cho số bàn
-    public int getTableNumber() {
-        return tableNumber;
-    }
-    public void setTableNumber(int tableNumber) {
-        this.tableNumber = tableNumber;
-    }
-
-    // getter & setter cho trạng thái
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    // setter
+    public void setTableNumber(int tableNumber) { this.tableNumber = tableNumber; }
+    public void setTableStatus(TableStatus tableStatus) { this.tableStatus = tableStatus; }
 
     @Override
     public String toString() {
-        return "Table{" + "tableNumber=" + tableNumber + ", status='" + status + '\'' + '}';
+        return "Table{" +
+                "tableNumber=" + tableNumber +
+                ", tableStatus=" + tableStatus +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Table table = (Table) o;
+        return tableNumber == table.tableNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(tableNumber);
     }
 }
